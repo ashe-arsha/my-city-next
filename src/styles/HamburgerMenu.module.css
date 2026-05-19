@@ -1,0 +1,17 @@
+/* HamburgerMenu.module.css */
+
+/* دکمه همبرگر */
+.hamburgerBtn {
+  display: none; /* به صورت پیش‌فرض مخفی می‌شود */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* ریسپانسیو (نمایش دکمه همبرگر در موبایل) */
+@media (max-width: 768px) {
+  .hamburgerBtn {
+    display: block; /* نمایش دکمه همبرگر در موبایل */
+  }
+}

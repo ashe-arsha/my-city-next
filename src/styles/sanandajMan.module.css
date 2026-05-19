@@ -1,0 +1,1060 @@
+/* src/styles/sanandajMan.module.css */
+@font-face {
+  font-family: "YekanBakh";
+  src: url("../assets/font/YekanBakh-SemiBold.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YekanBakh";
+  src: url("../assets/font/YekanBakh-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ✅ در CSS Module باید global ها اینطوری باشند */
+:global(*) {
+  box-sizing: border-box;
+  font-family: "YekanBakh", system-ui, -apple-system, sans-serif;
+}
+
+/* بهتره اینارو هم global کنی */
+:global(html),
+:global(body) {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  min-height: 100vh;
+  background: #f5f7fb;
+  direction: rtl;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 50;
+
+  width: 260px;
+  height: calc(100vh - 32px);
+
+  border-radius: 24px;
+  padding: 18px;
+  color: #fff;
+
+  background: linear-gradient(180deg, #2f7f86 0%, #163647 100%);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.brandWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+.logo1 {
+  position: relative;
+  width: 76px;
+  height: 76px;
+}
+
+.logo2 {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  overflow: hidden;
+  margin-bottom: 10%;
+}
+
+.logo2 img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.nav {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  text-decoration: none;
+  color: #fff;
+
+  padding: 12px 12px;
+  border-radius: 16px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navItemActive {
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.groupBtn {
+  width: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  color: #fff;
+  padding: 12px 12px;
+  border-radius: 16px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition: background 0.2s ease;
+}
+
+.groupBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.subWrap {
+  margin-right: 10px;
+  padding-right: 12px;
+  border-right: 1px solid rgba(255, 255, 255, 0.22);
+  overflow: hidden;
+  transition: max-height 0.28s ease;
+}
+
+.subInner {
+  padding-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.subItem {
+  text-decoration: none;
+  color: #fff;
+  opacity: 0.95;
+
+  padding: 9px 12px;
+  border-radius: 12px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  transition: background 0.2s ease;
+}
+
+.subItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.subItemActive {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.sidebarBottom {
+  padding-top: 10px;
+}
+
+/* ======== کیف پول و جداکننده پایین سایدبار ======== */
+
+.walletBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.walletLabel {
+  opacity: 0.9;
+}
+
+.walletValue {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 6px;
+}
+
+.sectionDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 14px 0 8px;
+}
+
+.logoutBtn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  padding: 12px 12px;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  transition: background 0.2s ease;
+
+  margin-bottom: 10%;
+}
+
+.logoutBtn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* --- شروع تغییرات جدید برای ریسپانسیو --- */
+
+.bottomNav {
+  display: none; /* در دسکتاپ مخفی است */
+}
+
+@media (max-width: 850px) {
+  .sidebar {
+    display: none; /* سایدبار در حالت موبایل مخفی شود */
+  }
+
+  .bottomNav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    background: #ffffff;
+    height: 70px;
+    border-top: 1px solid #e2e8f0;
+    padding-bottom: env(safe-area-inset-bottom); /* برای گوشی‌های آیفون جدید */
+
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  .bottomNavItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+    flex: 1;
+  }
+
+  .bottomNavItemActive {
+    color: #2f7f86; /* رنگ سبز برند شما */
+  }
+
+  .bottomNavItem span {
+    margin-top: 2px;
+  }
+}
+
+
+/* تغییرات برای هماهنگی نوار پایین با سایدبار و انیمیشن جذاب */
+.bottomNav {
+  display: none;
+}
+
+/* فقط در حالت موبایل فعال شود */
+@media (max-width: 850px) {
+  .sidebar {
+    display: none;
+  }
+
+  .bottomNav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    height: 78px;
+    border-top: 1px solid #e2e8f0;
+    background: #ffffff;
+    padding: 6px 0 env(safe-area-inset-bottom);
+
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .bottomNavItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    text-decoration: none;
+    color: #475569;
+
+    font-size: 11px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+    flex: 1;
+    position: relative;
+  }
+
+  .iconCircle {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  .bottomNavItemActive .iconCircle {
+    background: linear-gradient(135deg, #2f7f86, #163647);
+    transform: scale(1.2);
+    animation: pulseGlow 1s ease forwards;
+  }
+
+  .bottomNavItemActive svg {
+    color: #fff !important;
+    transform: scale(1.2);
+    transition: transform 0.25s ease;
+  }
+
+  .bottomNavItemActive span:last-child {
+    color: #2f7f86;
+  }
+
+  @keyframes pulseGlow {
+    0% {
+      box-shadow: 0 0 0 rgba(47, 127, 134, 0);
+    }
+    50% {
+      box-shadow: 0 0 12px rgba(47, 127, 134, 0.45);
+    }
+    100% {
+      box-shadow: 0 0 0 rgba(47, 127, 134, 0);
+    }
+  }
+}
+
+/* ========================= */
+/* Bottom Nav Animation Pack */
+/* ========================= */
+
+.bottomNavItem {
+  position: relative;
+  transition: all .35s cubic-bezier(.4,0,.2,1);
+}
+
+.iconCircle{
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition: all .35s cubic-bezier(.4,0,.2,1);
+}
+
+/* دایره hover */
+.iconCircle::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background: linear-gradient(180deg, #2f7f86 0%, #163647 100%);
+  opacity:0;
+  transform:scale(.6);
+  transition: all .35s cubic-bezier(.4,0,.2,1);
+  z-index:-1;
+}
+
+/* hover */
+.bottomNavItem:hover .iconCircle::before{
+  opacity:.18;
+  transform:scale(1.1);
+}
+
+.bottomNavItem:hover .iconCircle{
+  transform: translateY(-8px) scale(1.15);
+}
+
+.bottomNavItem:hover svg{
+  transform:scale(1.18);
+  transition: all .35s cubic-bezier(.4,0,.2,1);
+}
+
+/* active page */
+.bottomNavItemActive .iconCircle::before{
+  opacity:1;
+  transform:scale(1);
+  background: linear-gradient(180deg, #2f7f86 0%, #163647 100%);
+}
+
+.bottomNavItemActive .iconCircle{
+  transform: translateY(-10px) scale(1.2);
+}
+
+.bottomNavItemActive svg{
+  color:#fff;
+  transform:scale(1.2);
+}
+
+/* انیمیشن نرم برای آیکون */
+.bottomNavItem svg{
+  transition: all .35s cubic-bezier(.4,0,.2,1);
+}
+
+
+
+
+/* ===== Main content ===== */
+.main {
+  padding-right: 292px; /* 260 + gap */
+  padding-left: 16px;
+  padding-top: 26px;
+  padding-bottom: 30px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  margin-bottom: 18px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.subtitle {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.searchBox {
+  width: 420px;
+  max-width: 100%;
+  background: #fff;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 18px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 10px rgba(2, 6, 23, 0.05);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+  color: #334155;
+}
+
+.section {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: 0 2px 16px rgba(2, 6, 23, 0.05);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.sectionAction {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  color: #475569;
+}
+
+.sectionAction:hover {
+  color: #0f172a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.card {
+  width: 100%;
+  text-align: right;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 18px;
+  padding: 14px 14px;
+
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 38px rgba(2, 6, 23, 0.1);
+}
+
+.cardInner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconBox {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+}
+
+.toneBlue {
+  background: #f0f9ff;
+  color: #0369a1;
+  border-color: #e0f2fe;
+}
+
+.toneGray {
+  background: #f1f5f9;
+  color: #334155;
+  border-color: #e2e8f0;
+}
+
+.toneYellow {
+  background: #fffbeb;
+  color: #b45309;
+  border-color: #fef3c7;
+}
+
+.cardTitle {
+  margin-top: 7.5px;
+  font-size: 12px;
+  font-weight: 900;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardSub {
+  margin-top: 1px;
+  font-size: 10px;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  border: 1px solid #2f7f86;
+  background: #2f7f86;
+
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: #e2e8f0;
+
+  cursor: pointer;
+
+  box-shadow: 0 2px 10px rgba(2, 6, 23, 0.04);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile:hover {
+  background: rgba(6, 32, 95, 0.9);
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
+}
+
+.profileIcon {
+  color: #fbfbfb;
+  opacity: 0.95;
+}
+
+.profileName {
+  font-size: 13px;
+  font-weight: 900;
+  color: #ffffff;
+
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profileChevron {
+  color: #fdfdfd;
+  opacity: 0.7;
+}
+
+/* ====================== Profile Modal Styles ====================== */
+
+.profileModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);   /* تاریکی بیشتر */
+  backdrop-filter: blur(20px);          /* تار خیلی قوی */
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.profileModal {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 510px;
+  max-width: 92vw;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: modalSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.profileModalContent {
+  padding: 32px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.profileAvatarContainer {
+  margin-bottom: 24px;
+}
+
+.profileAvatar {
+  width: 110px;
+  height: 110px;
+  background: #f1f5f9;
+  border: 6px solid #0f766e;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f766e;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(15, 118, 110, 0.25);
+}
+
+.profileFullName {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f766e;
+  margin: 0 0 24px 0;
+  line-height: 1.3;
+}
+
+.profileDetails {
+  width: 470px;
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 18px 16px;
+  margin-bottom: 28px;
+  border: 1px solid #e2e8f0;
+}
+
+.profileRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 8px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.98rem;
+}
+
+.profileRow:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.value {
+  color: #1e2937;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* دکمه بستن */
+.closeButton {
+  background: #bb0000;
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 9px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+  width: 96%;
+}
+
+.closeButton:hover {
+  background: #115e59;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 118, 110, 0.3);
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ریسپانسیو */
+@media (max-width: 480px) {
+  .profileModal {
+    width: 94vw;
+    margin: 0 10px;
+  }
+  
+  .profileModalContent {
+    padding: 28px 20px 24px;
+  }
+  .profileDetails {
+  width: 330px;
+}
+}
+
+/* ====================== 404 Page ====================== */
+.notFoundContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.notFoundContent {
+  text-align: center;
+  color: white;
+  max-width: 520px;
+}
+
+.errorCode {
+  font-size: 11rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.45));
+}
+
+.errorCode span:first-child,
+.errorCode span:last-child {
+  animation: float4 4s ease-in-out infinite;
+  display: inline-block;
+}
+
+.errorCode .zero {
+  color: #67e8f9;
+  animation: float0 3.2s ease-in-out infinite 0.4s; /* تأخیر کوچک برای زیبایی بیشتر */
+  display: inline-block;
+}
+
+/* انیمیشن ۴ها */
+@keyframes float4 {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-28px); }
+}
+
+/* انیمیشن عدد ۰ */
+@keyframes float0 {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-42px); }
+}
+
+.notFoundTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.notFoundDescription {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.illustration {
+  margin: 30px 0 40px;
+  opacity: 0.9;
+}
+
+.searchIcon {
+  color: #137e8c;
+}
+
+.notFoundActions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.primaryButton {
+  background: white;
+  color: #0f766e;
+}
+
+.primaryButton:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.secondaryButton {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.secondaryButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
+.linkButton {
+  background: none;
+  border: none;
+  color: #67e8f9;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ================== Responsive ================== */
+@media (max-width: 780px) {
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .profile {
+    justify-content: space-between;
+  }
+
+  .searchBox {
+    width: 100%;
+  }
+}
+
+.mt16 { margin-top: 16px; }
+.mt24 { margin-top: 24px; }
+
+/* ===== Responsive ===== */
+/* ... بقیه کدهای قبلی ... */
+
+/* ===== Responsive (تغییرات اصلی برای گرید موبایل) ===== */
+
+/* در مانیتورهای بزرگ ۴ ستونه */
+@media (max-width: 1200px) {
+  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* در تبلت‌ها ۳ ستونه */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* 📱 تغییرات جادویی برای موبایل (زیر ۶۰۰ پیکسل) */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr); /* ۳ تا در هر ردیف - اگر ۴تا می‌خوای بکنش repeat(4, 1fr) */
+    gap: 8px; /* فاصله کمتر برای جا شدن در عرض موبایل */
+    padding: 4px;
+  }
+
+  .card {
+    padding: 12px 8px; /* پدینگ فشرده‌تر */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent !important; /* حذف بک‌گراند سفید */
+    border: none !important;            /* حذف خط دور */
+    box-shadow: none !important; 
+  }
+
+  .cardInner {
+    flex-direction: column; /* آیکون بالا، متن پایین */
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .iconBox {
+    width: 48px;  /* کمی بزرگتر برای جلوه بهتر در حالت عمودی */
+    height: 48px;
+    margin-bottom: 4px;
+  }
+
+  .cardTitle {
+    font-size: 9px; /* فونت کوچکتر برای اینکه توی عرض کم نشکنه */
+    white-space: normal; /* اجازه بده اگر متن طولانی بود در دو خط بیاد */
+    line-height: 1.4;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* حداکثر دو خط */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .cardSub {
+    display: none; /* ساب‌تایتل رو در حالت گرید موبایل حذف می‌کنیم چون فضا رو شلوغ می‌کنه */
+  }
+
+  /* اصلاح پدینگ بدنه اصلی در موبایل */
+  .main {
+    padding-right: 16px;
+    padding-bottom: 90px; /* برای اینکه دکمه‌های نویگیشن پایین روی محتوا نیان */
+  }
+
+  .section {
+    padding: 12px;
+    border-radius: 16px;
+  }
+}
+
+/* اگر موبایل خیلی باریک بود (مثل SE) باز هم ۳ تا بمونه ولی فونت فشرده‌تر */
+@media (max-width: 360px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
+  .cardTitle {
+    font-size: 9px;
+  }
+}

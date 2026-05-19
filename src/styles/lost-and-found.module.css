@@ -1,0 +1,758 @@
+.pageWrapper {
+  display: flex;
+  direction: rtl;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.contentArea {
+  flex: 1;
+  /* نکته طلایی: این مارجین محتوا رو از زیر سایدبار بیرون می‌کشه */
+  margin-right: 300px; 
+  padding: 40px;
+  /* برای اطمینان از اینکه محتوا بیش از حد پهن نشه در مانیتورهای عریض */
+  max-width: calc(100vw - 300px); 
+  box-sizing: border-box;
+}
+
+/* اگر می‌خوای در رزولوشن‌های پایین سایدبار غیب بشه یا محتوا تغییر کنه: */
+@media (max-width: 1024px) {
+  .contentArea {
+    margin-right: 80px; /* اگر سایدبار در حالت موبایل باریک میشه */
+  }
+}
+
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  gap: 20px;
+}
+
+.searchWrapper {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 45px 12px 15px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background-color: white;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #1e4d56;
+  box-shadow: 0 0 0 3px rgba(30, 77, 86, 0.1);
+}
+
+.registerBtn {
+  background-color: #1e4d56;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.registerBtn:hover {
+  background-color: #163a41;
+}
+
+.tabsContainer {
+  display: flex;
+  gap: 8px;
+  background: #f1f5f9;
+  padding: 6px;
+  border-radius: 14px;
+  width: fit-content;
+  margin-bottom: 30px;
+}
+
+.tab {
+  padding: 10px 24px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #64748b;
+  background: transparent;
+  transition: all 0.2s;
+}
+
+.activeTab {
+  background: white;
+  color: #1e4d56;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  border-radius: 24px; /* یکم گردتر برای ظاهر مدرن شهرداری */
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #edf2f7;
+  
+  /* سایه جدید و عمیق‌تر که خواستی */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 
+              0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  /* سایه قوی‌تر هنگام هاور */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: #1e4d56;
+}
+
+.cardContent {
+  flex: 1;
+}
+
+.cardTitle {
+  margin: 0 0 16px 0;
+  font-size: 1.1rem;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.cardDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.detailRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.detailIcon {
+  color: #1e4d56;
+}
+
+.detailsBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1.5px solid #1e4d56;
+  color: #1e4d56;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.detailsBtn:hover {
+  background: #1e4d56;
+  color: white;
+}
+
+.cardBadge {
+  color: #e2e8f0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px;
+  color: #94a3b8;
+}
+/* =========================
+   MODAL OVERLAY
+========================= */
+
+.modalOverlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42,0.55);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modalContent{
+  width: 100%;
+  max-width: 700px;
+  background: #fff;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow:
+    0 25px 50px -12px rgba(0,0,0,0.25),
+    0 10px 20px rgba(0,0,0,0.08);
+  animation: modalFade .25s ease;
+}
+
+@keyframes modalFade{
+  from{
+    opacity:0;
+    transform: translateY(10px) scale(.95);
+  }
+  to{
+    opacity:1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================
+   MODAL HEADER
+========================= */
+
+.modalHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 28px;
+  border-bottom:1px solid #e2e8f0;
+  background:#f8fafc;
+}
+
+.modalHeader h3{
+  margin:0;
+  font-size:1.1rem;
+  font-weight:700;
+  color:#1e293b;
+}
+
+.closeBtn{
+  background:none;
+  border:none;
+  cursor:pointer;
+  color:#64748b;
+  transition:.2s;
+}
+
+.closeBtn:hover{
+  color:#ef4444;
+}
+
+/* =========================
+   STEP 1 SELECT TYPE
+========================= */
+
+.selectionStep{
+  padding:40px;
+  text-align:center;
+}
+
+.stepDesc{
+  color:#64748b;
+  margin-bottom:30px;
+}
+
+.selectionGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.selectionCard{
+  border:2px solid #e2e8f0;
+  border-radius:18px;
+  padding:35px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:15px;
+  cursor:pointer;
+  transition:all .25s;
+  background:white;
+}
+
+.selectionCard span{
+  font-weight:700;
+  font-size:1rem;
+}
+
+.selectionCard:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 22px rgba(0,0,0,0.08);
+}
+
+.lostType{
+  color:#e11d48;
+}
+
+.lostType:hover{
+  border-color:#e11d48;
+  background:#fff1f2;
+}
+
+.foundType{
+  color:#059669;
+}
+
+.foundType:hover{
+  border-color:#059669;
+  background:#ecfdf5;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.reportForm{
+  padding:30px 34px 34px;
+}
+
+.formGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.inputGroup{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.fullWidth{
+  grid-column:span 2;
+}
+
+.inputGroup label{
+  font-size:.85rem;
+  font-weight:600;
+  color:#475569;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.inputGroup input,
+.inputGroup textarea{
+  padding:12px 14px;
+  border-radius:12px;
+  border:1.5px solid #e2e8f0;
+  font-family:inherit;
+  font-size:.9rem;
+  transition:.2s;
+}
+
+.inputGroup textarea{
+  resize:none;
+}
+
+.inputGroup input:focus,
+.inputGroup textarea:focus{
+  outline:none;
+  border-color:#1e4d56;
+  box-shadow:0 0 0 3px rgba(30,77,86,0.12);
+}
+
+/* =========================
+   FORM ACTIONS
+========================= */
+
+.formActions{
+  display:flex;
+  justify-content:flex-end;
+  gap:12px;
+  margin-top:30px;
+}
+
+.submitBtn{
+  background:#1e4d56;
+  color:white;
+  border:none;
+  padding:12px 26px;
+  border-radius:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.submitBtn:hover{
+  background:#173c42;
+}
+
+.backBtn{
+  background:#f1f5f9;
+  border:none;
+  color:#475569;
+  padding:12px 20px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.backBtn:hover{
+  background:#e2e8f0;
+}
+/* اصلاح کلی ساختار مودال برای RTL */
+.modalContent {
+    direction: rtl;
+    background: white;
+    padding: 0;
+    border-radius: 28px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.detailContainer {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.detailHeader {
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.detailTitle {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 10px 0;
+    display: block;
+}
+
+/* شبکه اطلاعات */
+.detailInfoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.infoBox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8fafc;
+    padding: 16px;
+    border-radius: 18px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s;
+}
+
+.infoBox:hover {
+    border-color: #cbd5e1;
+    background: #f1f5f9;
+}
+
+.infoBox svg {
+    color: #64748b;
+    flex-shrink: 0;
+}
+
+.infoContent {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.infoContent label {
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+.infoContent p {
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+    margin: 0;
+}
+
+/* بخش توضیحات */
+.descriptionSection {
+    background: #f1f5f9;
+    padding: 20px;
+    border-radius: 20px;
+    border-right: 4px solid #0d9488;
+}
+
+.descriptionSection label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.descriptionSection p {
+    line-height: 1.8;
+    color: #475569;
+    font-size: 14px;
+    margin: 0;
+    text-align: justify;
+}
+
+/* دکمه تماس پایین */
+.callBtn {
+    background: #0d9488;
+    color: white;
+    padding: 16px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.callBtn:hover {
+    background: #0f766e;
+    transform: translateY(-2px);
+}
+
+/* اصلاح استایل DatePicker که مثل بقیه فیلدها بشه */
+.customDateInput {
+    width: 100% !important;
+    height: 48px !important;
+    border-radius: 12px !important;
+    border: 1.5px solid #e2e8f0 !important;
+    padding: 0 15px !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    transition: all 0.2s !important;
+}
+
+.customDateInput:focus {
+    border-color: #0d9488 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1) !important;
+}
+
+@media (max-width: 500px) {
+    .detailInfoGrid {
+        grid-template-columns: 1fr;
+    }
+}
+.modalContent {
+    /* ... کدهای قبلی ... */
+    
+    max-height: 90vh;
+    overflow-y: auto;
+
+    /* مخفی کردن اسکرول‌بار برای فایرفاکس */
+    scrollbar-width: none; 
+    
+    /* مخفی کردن اسکرول‌بار برای کروم، سافاری و اپرا */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* یه ترفند برای اینکه در حالت RTL اسکرول‌بار لبه‌های گرد رو خراب نکنه */
+    -ms-overflow-style: none; 
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 40px;
+    padding-bottom: 20px;
+}
+
+.pageNumbers {
+    display: flex;
+    gap: 8px;
+}
+
+.pageNumber {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    color: #64748b;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.activePage {
+    background: #0d9488;
+    color: white;
+    border-color: #0d9488;
+    box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2);
+}
+
+.pageArrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background: #f1f5f9;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.pageArrow:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.trackBtn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  padding:10px 18px;
+
+  border:none;
+  border-radius:10px;
+
+  background:#1f2937;
+  color:#fff;
+
+  font-size:14px;
+  font-weight:600;
+
+  cursor:pointer;
+  transition:all .2s ease;
+}
+
+.trackBtn:hover{
+  background:#111827;
+  transform:translateY(-1px);
+}
+/* ===== Mobile Responsive (زیر ۷۶۸ پیکسل) ===== */
+@media (max-width: 768px) {
+  .contentArea {
+    margin-right: 0 !important; /* حذف فاصله سایدبار دسکتاپ */
+    padding: 16px;              /* پدینگ کمتر برای فضای بیشتر */
+    max-width: 100%;
+    padding-bottom: 100px;      /* فضا برای Bottom Navigation پایین گوشی */
+  }
+
+  .topBar {
+    flex-direction: column;     /* المان‌ها زیر هم بیایند */
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .searchWrapper {
+    max-width: 100%;            /* سرچ‌بار تمام‌عرض */
+  }
+
+  .registerBtn {
+    width: 100%;                /* دکمه ثبت آگهی تمام‌عرض */
+    justify-content: center;
+  }
+
+  .tabsContainer {
+    width: 100%;                /* تب‌ها تمام‌عرض */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+
+  .tab {
+    padding: 10px 5px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr; /* کارت‌ها یکی‌یکی زیر هم */
+    gap: 16px;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 18px;
+    flex-direction: row;        /* نگه داشتن ساختار افقی کارت */
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  /* مودال‌ها در موبایل */
+  .modalContent {
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 20px 20px 0 0; /* حالت کشویی از پایین */
+    position: fixed;
+    bottom: 0;
+  }
+
+  .selectionGrid {
+    grid-template-columns: 1fr; /* انتخاب نوع آگهی زیر هم */
+    gap: 12px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr; /* فیلدهای فرم زیر هم */
+  }
+
+  .fullWidth {
+    grid-column: span 1;
+  }
+
+  .detailInfoGrid {
+    grid-template-columns: 1fr 1fr; /* جزئیات دو ستونه بمونه مگر در گوشی‌های خیلی کوچک */
+  }
+}
+
+/* گوشی‌های خیلی باریک */
+@media (max-width: 480px) {
+  .detailInfoGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cardBadge svg {
+    width: 18px;
+    height: 18px;
+  }
+}
